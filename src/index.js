@@ -12,6 +12,10 @@ const globalErrorHandler = require('./controllers/globalErrorHandler');
 
 const app = express();
 
+// Test to set rate limit on hosted server
+app.set('trust proxy', 1)
+app.get('/ip', (request, response) => response.send(`ip:${request.ip} ----x-forward-header${request.headers['x-forwarded-for']}`))
+
 // to prevent brute force
 app.use(limiter);
 app.use(helmet());
