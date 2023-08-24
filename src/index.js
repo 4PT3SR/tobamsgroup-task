@@ -13,7 +13,6 @@ const globalErrorHandler = require('./controllers/globalErrorHandler');
 const app = express();
 
 // to prevent brute force
-app.set('trust proxy', true)
 app.use(limiter);
 app.use(helmet());
 app.use(cors());
